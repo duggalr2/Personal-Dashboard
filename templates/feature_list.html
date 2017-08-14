@@ -1,0 +1,113 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>10%</title>
+
+        {#     Link to Semantic cdn#}
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+
+        {# Skeleton CSS #}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+
+
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">    </script>
+
+    </head>
+
+
+    <body style="margin-top: 25px">
+
+         <h2>Features</h2>
+        <u><a href="{% url 'home_list' %}">Home</a></u>
+        <u><a href="{% url 'feature_create' %}" style="margin-left: 4px;">Add a Post</a></u><br/>
+
+
+    <div style="margin-top: 6px;">{% for pfeatures in priority_list %}</div>
+
+    <form method='POST' action='{% url 'feature_selected' new_id=pfeatures.id %}' onsubmit="return confirm('Done everything??')">{% csrf_token %}
+        {{ form.as_p }}
+    {{ pfeatures.content }} <br/>
+    <input type='submit' value='Done' />
+        <u><a class="button" href="{% url 'feature_edit' new_id=pfeatures.id %}" style="margin-left: 4px;">Edit Feature</a></u>
+    </form>
+    {% endfor %}
+
+    {% for obj in notpriority_list %}
+    <form method='POST' action='{% url 'feature_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+        {{ form.as_p }}
+    {{ obj.content | safe }}<br/>
+    <input class="button" type='submit' value='Done' />
+    <a class="button" href="{% url 'feature_edit' new_id=obj.id %}" style="margin-left: 4px;">Edit Feature</a>
+    </form>
+    {% endfor %}
+
+        <div id="progressbar" style="width: 50%; background-color: grey;">
+            <div id="bar" style="width: 5%; height: 30px; background-color: green;"></div>
+        </div>
+
+         <button onclick="add()">Add</button>
+         <button onclick="decrease()">Decrease</button>
+         <button onclick="reset()">Reset</button>
+         <button onclick="complete()">Complete</button>
+
+         <script>
+
+             function init() {
+                 x = getLocalStorage();
+                 if (x){
+                    document.getElementById('bar').style.width = x + '%';
+                 }
+             }
+
+             function setLocalStorage(x) {
+                localStorage.setItem('progress_width', x)
+             }
+
+             function getLocalStorage(){
+                 return localStorage.getItem('progress_width')
+             }
+
+             function add() {
+                 var x = getLocalStorage();
+                 var y = Number(x) + 20;
+                 if (Number(x) >= 100) {
+                     setLocalStorage(0);
+                     document.getElementById('bar').style.width = 0;
+                 }
+                 else {
+                    setLocalStorage(y);
+                    document.getElementById('bar').style.width = y.toString() + '%';
+                 }
+             }
+
+             function decrease() {
+                 var x = getLocalStorage();
+                 var y = Number(x) - 20;
+                 setLocalStorage(y);
+                 document.getElementById('bar').style.width = y.toString() + '%';
+             }
+
+             function reset() {
+                 setLocalStorage(0);
+                 document.getElementById('bar').style.width = 0;
+             }
+
+             function complete() {
+                 setLocalStorage(100);
+                 document.getElementById('bar').style.width = '100%';
+             }
+
+            init()
+
+         </script>
+
+    </body>
+
+</html>

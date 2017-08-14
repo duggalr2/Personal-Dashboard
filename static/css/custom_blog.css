@@ -1,0 +1,169 @@
+/* Notebook */
+
+/*.info_sidebar {*/
+    /*background-color: rgba(150, 150, 150, 0.2);*/
+    /*border-radius: 10px 10px 10px 10px;*/
+    /*line-height: 1.5em;*/
+    /*padding: 20px;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*width: 180px;*/
+/*}*/
+
+/*#notebook #notes h2.title {*/
+    /*color: #333333;*/
+    /*font-size: 30px;*/
+    /*margin: 10px auto 0.3em;*/
+    /*letter-spacing: 3px;*/
+    /*text-align: center;*/
+    /*width: 850px;*/
+/*}*/
+
+#notebook .note .text a {
+    border-bottom: 1px dotted #AAAAAA;
+    color: #5E1818;
+    text-decoration: none;
+}
+
+#notebook .note .text a:hover {
+    color: #000;
+    border-bottom: 1px solid #777;
+}
+
+#notebook #notes .title_date {
+    font-weight: normal;
+    letter-spacing: 3px;
+    position: relative;
+    top: 10px;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+}
+
+#notebook .note {
+    margin-top: 2em;
+    clear: both;
+    overflow: auto;
+}
+
+#notebook .center {
+    text-align: center;
+}
+
+#notebook .note .note_container {
+    margin: auto;
+    width: 850px;
+}
+
+#notebook .text {
+    float: left;
+    margin-left: 150px;
+    padding-top: 1em;
+    width: 500px;
+    margin-left: 175px;
+}
+
+#notebook .notepad_footer {
+    text-align: center;
+    padding-top: 1em;
+}
+
+#notebook .note .notepad_footer a {
+    text-decoration: none;
+    border-bottom: 0;
+}
+
+#notebook .note .notepad_footer a strong {
+    font-weight: 600;
+}
+
+#notebook .dsq-comment-text,
+#notebook .dsq-comment-footer {
+    font-size: 0.8em;
+}
+
+.text {
+    text-align: justify;
+    color: #555555;
+    font: 17px/29px baskerville,Georgia,"Times New Roman",Times,serif;
+}
+
+/*.text > p:first-child:first-letter {*/
+   /*font-size: 3.5em;*/
+    /*line-height: 0.7;*/
+    /*margin-top: 0.15em;*/
+    /*float: left;*/
+    /*display: block;*/
+    /*margin-right: 5px;*/
+    /*margin-left: -0.1em;*/
+    /*color: #602929;*/
+    /*text-transform: uppercase;*/
+/*}*/
+
+/*.text > p:first-child:first-line {*/
+     /*text-transform: uppercase;*/
+/*}*/
+
+#notebook .text h3,
+#notebook .text h4 {
+    border-bottom: 1px dotted #CCCCCC;
+    font-size: 25px;
+    margin-bottom: 10px;
+    margin-top: 1.5em;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family: "myriad-pro-condensed-1","myriad-pro-condensed-2",sans-serif;
+}
+
+.text p, .text ul, .text ol {
+    margin-bottom: 1em;
+}
+
+.text li {
+    margin-bottom: 0.5em;
+}
+
+#notebook ul li {
+    line-height: 1.6em;
+    margin-bottom: 0;
+}
+
+a, u {
+    text-decoration: none;
+    color: black;
+}
+
+/*
+.text code {
+    background-color: #DDDDDD;
+    border-left: 3px solid #CCCCCC;
+    display: block;
+    font-size: 13px;
+    line-height: 1em;
+    margin-bottom: 1em;
+    padding: 10px;
+    text-align: left;
+}
+*/
+
+/*!* Notepad Page *!*/
+/*#notebook #notes,*/
+/*#notebook #notes h2.title,*/
+/*#notebook .note .note_container{*/
+    /*width: auto;*/
+/*}*/
+
+/*#notebook img {*/
+    /*width: 100%;*/
+/*}*/
+
+/*#notebook .text {*/
+    /*width: auto;*/
+    /*padding: 1em;*/
+    /*margin: 0;*/
+/*}*/
+
+/*#notebook .sidebar {*/
+    /*display: none;*/
+/*}*/

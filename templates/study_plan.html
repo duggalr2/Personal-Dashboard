@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'course_list' %}">Course List</a></u>
+<u><a href="{% url 'study_create' %}" style="margin-left: 4px;">Add to Study Plan</a></u><br/>
+
+<h3>UOFT COURSES</h3>
+{% for obj in object_list %}
+    <form method='POST' action='{% url 'studyplan_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+        {{ form.as_p }}
+    {{ obj.title | safe }}
+    {{ obj.content | safe }}
+    <input type='submit' value='Delete Post' /> <br/>
+        <u><a href="{% url 'studyplan_edit' new_id=obj.id %}" style="margin-left: 4px;">Edit</a></u><br/>
+    </form> <br/>
+{% endfor %}
+
+</body>
+</html>

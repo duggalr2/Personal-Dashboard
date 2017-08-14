@@ -1,0 +1,156 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+
+    <style>
+        a, u
+        {
+            text-decoration: none;
+            color: black;
+        }
+
+        #blog-category
+        {
+            background-color: white;
+            letter-spacing: 1.5px;
+        }
+
+    </style>
+</head>
+
+
+<body style="background-color: #f6f6f9;">
+
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'post_create' %}" style="margin-left: 4px;">Add a Post</a></u>
+
+<div class="container" style="margin-top: 1.5em;">
+
+    <img src="{% static 'img/rahul-cartoon.jpg' %}" style=" margin-left: 45%;">
+
+    {% for obj in object_list %}
+        <ul id="post-list" style="text-align: center; list-style-type: none; font-family: Dosis, sans-serif;">
+            <li>
+                <a href="{% url 'post_detail' id=obj.id%}" style="font-weight: normal; font-size: 20px; letter-spacing: 1.5px;position: relative;">{{ obj.name | safe }}</a> <br/>
+                <form method="POST" action="{{ obj.category }}">{% csrf_token %}
+                    <span id="blog-category"><strong>{{ obj.category }}</strong></span>&ensp;
+                    <input type="hidden" name="country" value="{{ obj.category }}">
+                    <input type="submit" value={{ obj.category }} name="category"/>
+
+                </form>
+                <span id="blog-date">{{ obj.pub_date }}</span>
+            </li>
+        </ul>
+        <hr style="width: 32em;"/>
+    {% endfor %}
+
+{#    <div class="ui two column centered grid">#}
+{#    <div class=" ui section divider " style="width: 32em; text-align: center;"></div>#}
+{#    </div>#}
+
+<div class="pagination" style="font-size: 14px; letter-spacing: 1px; text-align: center; margin-top: 1%">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}" style="margin-left: 2px">next</a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+{#<form method='get' action='#'>#}
+{##}
+{#<input type="submit" value="Interest" name="Interest"/>#}
+{#    {% for int in interest_list %}#}
+{##}
+{#    <ul id="post-list" style="text-align: center; list-style-type: none; margin-top: 1em;">#}
+{#        <li>#}
+{#            <a href="{% url 'post_detail' id=int.id%}" style="font-weight: normal; font-size: 20px; letter-spacing: 1px;position: relative;">{{ int.name | safe }}</a> <aside style="color: #aaa; letter-spacing: 1px">{{ int.pub_date }}</aside>#}
+{#        </li>#}
+{#    </ul>#}
+{#    <div class="ui two column centered grid">#}
+{#        <div class=" ui section divider " style="width: 35em; text-align: center;"></div>#}
+{#    </div>#}
+{##}
+{#    {% endfor %}#}
+{##}
+{#    </form>#}
+{##}
+{#    <form method='get' action='#'>#}
+{#    <input type="submit" value="Research" name="Research"/>#}
+{#    {% for ob in research_list %}#}
+{##}
+{#    <ul id="post-list" style="text-align: center; list-style-type: none; margin-top: 1em;">#}
+{#        <li>#}
+{#            <a href="{% url 'post_detail' id=ob.id%}" style="font-weight: normal; font-size: 20px; letter-spacing: 1px;position: relative;">{{ ob.name | safe }}</a> <aside style="color: #aaa; letter-spacing: 1px">{{ ob.pub_date }}</aside>#}
+{#        </li>#}
+{#    </ul>#}
+{#    <div class="ui two column centered grid">#}
+{#    <div class=" ui section divider " style="width: 35em; text-align: center;"></div>#}
+{#    </div>#}
+{##}
+{#    {% endfor %}#}
+{#    </form>#}
+{##}
+{#    <form method='get' action='#'>#}
+{#    <input type="submit" value="Script" name="Script"/>#}
+{#    {% for sci in script_list %}#}
+{##}
+{#    <ul id="post-list" style="text-align: center; list-style-type: none; margin-top: 1em;">#}
+{#        <li>#}
+{#            <a href="{% url 'post_detail' id=sci.id%}" style="font-weight: normal; font-size: 20px; letter-spacing: 1px;position: relative;">{{ sci.name | safe }}</a> <aside style="color: #aaa; letter-spacing: 1px">{{ sci.pub_date }}</aside>#}
+{#        </li>#}
+{#    </ul>#}
+{#    <div class="ui two column centered grid">#}
+{#    <div class=" ui section divider " style="width: 35em; text-align: center;"></div>#}
+{#    </div>#}
+{##}
+{#    {% endfor %}#}
+{#    </form>#}
+{##}
+{#    <form method='get' action='#'>#}
+{#    <input type="submit" value="School" name="School"/>#}
+{#    {% for sch in school_list %}#}
+{##}
+{#    <ul id="post-list" style="text-align: center; list-style-type: none; margin-top: 1em;">#}
+{#        <li>#}
+{#            <a href="{% url 'post_detail' id=sch.id%}" style="font-weight: normal; font-size: 20px; letter-spacing: 1px;position: relative;">{{ sch.name | safe }}</a> <aside style="color: #aaa; letter-spacing: 1px">{{ sch.pub_date }}</aside>#}
+{#        </li>#}
+{##}
+{#    </ul>#}
+{#    <div class="ui two column centered grid">#}
+{#    <div class=" ui section divider " style="width: 35em; text-align: center;"></div>#}
+{#    </div>#}
+{##}
+{#    {% endfor %}#}
+{#    </form>#}
+{##}
+{#</section>#}
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <style>
+
+        .note {
+            font-family: Dosis, sans-serif;
+            margin-top: 2em;
+            clear: both;
+            overflow: auto;
+        }
+
+        .title {
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: capitalize;
+        }
+
+        .title_date {
+            font-weight: normal;
+            letter-spacing: 3px;
+            position: relative;
+            top: 10px;
+            font-size: 14px;
+            color: #aaa;
+            text-align: center;
+        }
+
+        .text {
+            margin: auto;
+            font-size: 17px;
+            line-height: 1.7em;
+            width: 500px;
+        }
+
+        .text li {
+            list-style: none;
+            margin-bottom: 0.5em;
+            text-indent: 5%;
+        }
+
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+
+</head>
+<body id="notebook">
+
+<u><a href="{% url 'blog_list' %}">Back</a></u>
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'post_delete' id=id %}" onclick="return confirm('Do you really want to delete?')">Delete Post</a></u>
+<u><a href="{% url 'post_update' id=id %} ">Update Post</a></u>
+
+<div id="notes" class="all_notes">
+
+    <div class="note" >
+        <div class="title_date gar">{{ date }}</div>
+        <h2 class="title">{{ title }}</h2>
+            <div class="note_container">
+            <div class="text">
+                {{ body | safe}} <br/>
+            </div>
+            </div>
+    </div>
+</div>
+
+</body>
+</html>

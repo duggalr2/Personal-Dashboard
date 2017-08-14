@@ -1,0 +1,130 @@
+Term Sheets & Valuations - A Line by Line Look at the Intricacies of Term Sheets & Valuations (Bigwig Briefs)
+Safe Is Not an Option
+Incandescence
+Venture Capital and the Finance of Innovation, nd Edition
+An Introduction to Database Systems (th Edition)
+Transactional Information Systems: Theory, Algorithms, and the Practice of Concurrency Control and Recovery (The Morgan Kaufmann Series in Data Management Systems)
+Computer Graphics: Principles and Practice (rd Edition)
+Worst Instincts: Cowardice, Conformity, and the ACLU
+The Checklist Manifesto: How to Get Things Right
+Venture Deals: Be Smarter Than Your Lawyer and Venture Capitalist
+Discrete Mathematics with Applications
+Free to Choose: A Personal Statement
+Democracy for Realists: Why Elections Do Not Produce Responsive Government (Princeton Studies in Political Behavior)
+Design Patterns: Elements of Reusable Object-Oriented Software
+A Retargetable C Compiler: Design and Implementation
+Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques for Building Intelligent Systems
+Scala for Machine Learning
+Interconnections: Bridges, Routers, Switches, and Internetworking Protocols (nd Edition)
+Physically Based Rendering, Third Edition: From Theory to Implementation
+D Game Engine Architecture: Engineering Real-Time Applications with Wild Magic (The Morgan Kaufmann Series in Interactive d Technology)
+The Mathematical Experience
+Never Split the Difference: Negotiating As If Your Life Depended On It
+Comedy Writing for Late-Night TV: How to Write Monologue Jokes, Desk Pieces, Sketches, Parodies, Audience Pieces, Remotes, and Other Short-Form Comedy
+The High Cost of Free Parking, Updated Edition
+Zoning Rules!: The Economics of Land Use Regulation
+Command and Control: Nuclear Weapons, the Damascus Accident, and the Illusion of Safety
+The Problem of Political Authority: An Examination of the Right to Coerce and the Duty to Obey
+RESTful Web Clients
+Women Don't Ask: The High Cost of Avoiding Negotiation--and Positive Strategies for Change
+Make: Analog Synthesizers
+Strange Gods: A Secular History of Conversion
+Build APIs You Won't Hate: Everyone and their dog wants an API, so you should probably learn how to build them
+The Adventure of English: The Biography of a Language
+The Art of Electronics
+The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact
+Why Civil Resistance Works: The Strategic Logic of Nonviolent Conflict (Columbia Studies in Terrorism and Irregular Warfare)
+Corporate Confidential:  Secrets Your Company Doesn't Want You to Know---and What to Do About Them
+The Unix Programming Environment (Prentice-Hall Software Series)
+Python for Kids: A Playful Introduction to Programming
+Do the Work: Overcome Resistance and Get Out of Your Own Way
+Tricks of the D Game Programming Gurus-Advanced D Graphics and Rasterization (Other Sams)
+Algorithms in C, Parts -: Fundamentals, Data Structures, Sorting, Searching (rd Edition) (Pts. -)
+The Algorithm Design Manual
+Flights of Fantasy: Programming d Video Games in C++/Book and Disk
+Deep Learning (Adaptive Computation and Machine Learning series)
+Applied Microsoft® .NET Framework Programming (Developer Reference)
+TensorFlow For Machine Intelligence: A hands-on introduction to learning algorithms
+The Design and Implementation of the FreeBSD Operating System (nd Edition)
+The Powerhouse: America, China, and the Great Battery War
+PostgreSQL  High Availability Cookbook
+MySQL High Availability: Tools for Building Robust Data Centers
+High Performance MySQL: Optimization, Backups, and Replication
+Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems
+Enough Rope to Shoot Yourself in the Foot: Rules for C and C++ Programming (Unix/C)
+Operating Systems Design and Implementation (rd Edition)
+Build Your Own Metal Working Shop From Scrap (Complete  Book Series)
+Learning TensorFlow
+Konz
+The Road to Hell
+The Great Escape: Health, Wealth, and the Origins of Inequality
+Algorithms (th Edition)
+Elixir in Action
+Python in a Nutshell, Second Edition (In a Nutshell)
+The Great Telecom Meltdown
+Toolmaker Koan
+PHP and MySQL by Example
+Liquidated: An Ethnography of Wall Street (a John Hope Franklin Center Book)
+Fundamentals of Computer Graphics, Fourth Edition
+The Shoelace Book: A Mathematical Guide to the Best (And Worst) Ways to Lace Your Shoes (Mathematical World)
+Linear Algebra: A Modern Introduction (with CD-ROM) (Available Titles CengageNOW)
+Linear Algebra and Its Applications, rd Updated Edition (Book & CD-ROM)
+Introduction to Linear Algebra, Third Edition
+Cadillac Desert: The American West and Its Disappearing Water, Revised Edition
+The AWK Programming Language
+Joe Celko's SQL for Smarties, Fourth Edition: Advanced SQL Programming (The Morgan Kaufmann Series in Data Management Systems)
+The Inevitable: Understanding the  Technological Forces That Will Shape Our Future
+Great Again: How to Fix Our Crippled America
+Peter Norton's Assembly Language Book for the IBM PC
+Berkshire Hathaway Letters to Shareholders
+Build Your Own Flight Sim in C++: Programming a d Flight Simulator Using Oop
+Taking the Risk Out of Democracy: Corporate Propaganda versus Freedom and Liberty (History of Communication)
+Flask Web Development
+Everyday Calculus: Discovering the Hidden Math All Around Us
+Looting Africa: The Economics of Exploitation
+The Strategy and Tactics of Pricing: A Guide to Growing More Profitably
+Hack and HHVM
+Free to Learn: Why Unleashing the Instinct to Play Will Make Our Children Happier, More Self-Reliant, and Better Students for Life
+Database Design for Mere Mortals: A Hands-On Guide to Relational Database Design (nd Edition)
+You Have the Right to Remain Innocent
+Programming from the Ground Up
+Reinventing American Health Care: How the Affordable Care Act will Improve our Terribly Complex, Blatantly Unjust, Outrageously Expensive, Grossly Inefficient, Error Prone System
+Programming Rust
+Alphabetical: How Every Letter Tells a Story
+The Practice of Cloud System Administration: DevOps and SRE Practices for Web Services, Volume
+The Practice of System and Network Administration, Second Edition
+Learning Swift
+Metamagical Themas: Questing For The Essence Of Mind And Pattern
+Priceless: The Myth of Fair Value (and How to Take Advantage of It)
+The Son Also Rises: Surnames and the History of Social Mobility (The Princeton Economic History of the Western World)
+Introduction to Water in California (California Natural History Guides)
+Andy Grove The Life and Times of an American Business Icon
+Only the Paranoid Survive How to Exploit the Crisis Points That Challenge Every Company
+The Intel Trinity How Robert Noyce Gordon Moore and Andy Grove Built the World's Most Important Company
+Divining a Digital Future Mess and Mythology in Ubiquitous Computing MIT Press
+Andy Grove The Life and Times of an American
+Red Mars Mars Trilogy
+st Century C
+Clinton Cash The Untold Story of How and Why Foreign Governments and Businesses Helped Make Bill and Hillary Rich
+Failure Is Not an Option Mission Control From Mercury to Apollo and Beyond
+Amusing Ourselves to Death Public Discourse in the Age of Show Business
+Dance Me to the End of Love Art Poetry
+Advanced Compiler Design and Implementation
+Modern Money Theory A Primer on Macroeconomics for Sovereign Monetary Systems
+Schild's Ladder A Novel
+Diaspora A Novel
+UNIX and Linux System Administration Handbook
+Inside Intel Andy Grove and the Rise of the World's Most Powerful Chip Company
+Jack of Shadows Rediscovered Classics
+Doing Grammar
+Seeking Wisdom From Darwin to Munger
+Introduction to Hilbert Space and the Theory of Spectral Multiplicity
+FiniteDimensional Vector Spaces
+Turtle Geometry The Computer as a Medium for Exploring Mathematics Artificial Intelligence
+Data Structures and Algorithms
+Atari Inc Business is Fun
+Racing the Beam The Atari Video Computer System Platform Studies
+High Performance Computing
+The Tao of Programming
+The Old Way of Seeing How Architecture Lost Its Magic And How to Get It Back
+From Bauhaus to Our House

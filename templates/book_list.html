@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+
+    {# Link to Animate cdn  #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    {# Link to Semantic cdn  #}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+
+</head>
+<body>
+
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'book_create' %}" style="margin-left: 4px;">Add a Post</a></u><br/>
+
+
+<div class="container">
+    {% for obj in object_list %} <br/>
+            <form method='POST' action='{% url 'book_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+                {{ form.as_p }}
+                <u>{{ obj.category }} </u><br/>
+                {{ obj.title }}, <i>{{ obj.author }}</i><br/>
+            <input type='submit' value='Delete Post' />
+        </form>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+

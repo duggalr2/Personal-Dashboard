@@ -1,0 +1,24 @@
+Safe Is Not an Option
+Venture Capital and the Finance of Innovation, nd Edition
+An Introduction to Database Systems (th Edition)
+Transactional Information Systems: Theory, Algorithms, and the Practice of Concurrency Control and Recovery (The Morgan Kaufmann Series in Data Management Systems)
+Computer Graphics: Principles and Practice (rd Edition)
+Worst Instincts: Cowardice, Conformity, and the ACLU
+The Checklist Manifesto: How to Get Things Right
+Discrete Mathematics with Applications
+Design Patterns: Elements of Reusable Object-Oriented Software
+A Retargetable C Compiler: Design and Implementation
+Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques for Building Intelligent Systems
+Scala for Machine Learning
+Interconnections: Bridges, Routers, Switches, and Internetworking Protocols (nd Edition)
+The Mathematical Experience
+RESTful Web Clients
+Make: Analog Synthesizers
+Build APIs You Won't Hate: Everyone and their dog wants an API, so you should probably learn how to build them
+The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact
+The Unix Programming Environment (Prentice-Hall Software Series)
+Algorithms in C, Parts -: Fundamentals, Data Structures, Sorting, Searching (rd Edition) (Pts. -)
+The Algorithm Design Manual
+Deep Learning (Adaptive Computation and Machine Learning series)
+TensorFlow For Machine Intelligence: A hands-on introduction to learning algorithms
+PostgreSQL  High Availability Cookbook

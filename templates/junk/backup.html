@@ -1,0 +1,355 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>© Hacker </title>
+
+    <style type="text/css">
+    #defaultCountdown { width: 300px; height: 50px; }
+
+{#    HOVERING EFFECT BELOW!!#}
+    #goals #popup {
+        display: none;
+    }
+    #goals:hover #popup {
+        display: block;
+    }
+
+    </style>
+
+    {# Link to Animate cdn  #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    {# Skeleton CSS #}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+
+        {# Link to Semantic cdn  #}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'typed.js-master/js/typed.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.countdown.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.plugin.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.countdown.js' %}"></script>
+
+    {# Link to BootStrap #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    {# Link to Google Fonts #}
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Peddana|Proza+Libre|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab|News+Cycle|Source+Sans+Pro" rel="stylesheet">
+
+    {# Script for the Countdown Timer #}
+    <script>
+    $(function () {
+	var austDay = new Date();
+{#    	austDay = new Date(austDay.getFullYear(), year, month-1, day}#}
+{#      austDay = new Date(2017, 4, 15, 10, 0, 0, 0);#}
+        austDay = new Date(2017, 4-1, 30);
+	$('#defaultCountdown').countdown({until: austDay});
+	$('#year').text(austDay.getFullYear());
+    });
+    </script>
+
+</head>
+
+{# WELCOMING PAGE #}
+{#<body style="background-image: url('https://drscdn.500px.org/photo/93291635/m%3D2048/c423735160ad74b999c74038dc9cf2fc')">#}
+<div class="container" style="text-decoration-color: white">
+<div id="welcome">
+    <h1 style="font-family: 'Raleway', sans-serif; margin-top: 15%; text-align: center; font-size: 50px"> Welcome to your Dasboard, <strong class="element"></strong></h1><br/>
+</div>
+
+<div id="quote" style="display: none; font-family: 'Raleway', sans-serif; text-align: center; margin-top: 1em;">
+    <h2>{{ quotes.content }}</h2><br/>
+</div>
+
+<div id="goal" style="display: none; font-family: 'Raleway', sans-serif; text-align: center; margin-top: 1.5em;">
+    <div class="ui four column very relaxed grid">
+    <div class="column"></div>
+    <div class="column">
+        <h1 style="font-size: 5em;"><strong>{% now "g:i" %}</strong></h1>
+    </div>
+    <div class="column">
+    {% for g in goals %}
+        <h4 ><strong>{{ g.title | safe }}</strong></h4>
+    {% endfor %}
+    </div>
+    </div>
+</div>
+</div>
+{#</body>#}
+
+{#Script for FadeIN Welcoming#}
+<script>
+        $(function() {
+                $('#welcome').hide().delay(1000).fadeIn(1500);
+
+            // note that this doens't call hide
+                $('#quote').delay(3800).fadeIn('slow');
+
+            // note that this doens't call hide
+                $('#goal').delay(4800).fadeIn('slow');
+
+    });
+
+{# Script for Fadeing out and showing main page#}
+</script>
+
+    <script>
+
+        var FADE_DELAY = 6000;
+        var FADE_TIME = 2000;
+
+                $(document).ready(function () {
+                    $('#random').hide();
+                    $('#second-random').hide();
+                    setTimeout(fadeOutIntro, FADE_DELAY);
+                });
+
+                function fadeOutIntro() {
+                    $('#welcome').fadeOut(FADE_TIME);
+                    $('#quote').fadeOut(FADE_TIME);
+                    $('#goal').fadeOut(FADE_TIME);
+			        setTimeout(fadeInPage, FADE_TIME);
+                }
+                function fadeInPage() {
+                    $('#random').fadeIn(FADE_TIME);
+                    $('#second-random').fadeIn(FADE_TIME);
+                }
+    </script>
+
+{# DASHBOARD #}
+
+{# TODO: Remove all JS Code and majority of stylesheets, keep 1 only; #}
+{# TODO: Only write JS Code that I wrote!! #}
+
+
+<body>
+
+<div id="random">
+
+
+<nav class="main" style="right: 0; position: absolute; padding-top: 17px; z-index: 100; font-family: 'Josefin slab', sans-serif;">
+    <a href="{% url 'blog_list' %}" style="color: #333333; display: inline-block; font-size: 17px; margin: 0 8px; text-decoration: none; text-transform: uppercase;">Blog</a>
+    &bull;
+    <a href="{% url 'feature_list' %}" style="color: #333333; display: inline-block; font-size: 17px; margin: 0 8px; text-decoration: none; text-transform: uppercase;">Feature Request</a>
+    &bull;
+    <a href="{% url 'test_view' %}" style="color: #333333; display: inline-block; font-size: 17px; margin: 0 8px; text-decoration: none; text-transform: uppercase;">Testview</a>
+
+</nav>
+
+
+
+{% block content %}
+
+<div class="container">
+
+<div class="text-center" style="font-family: 'Josefin slab', sans-serif; margin-top: 1% ">
+
+    <div class="value-props row" >
+
+    <div class="five columns value-prop">
+        <a href="{% url 'rough_todo' %}" style="text-decoration: none; color: black;"><h3 style="font-size: 30px;">Todo List</h3></a><br/>
+        {% for obj in object_list %}
+            <form method='POST' action='{% url 'tdevent_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete?')">{% csrf_token %}
+                {{ form.as_p }}
+                <p style="text-align: center; font-size: 16px">{{ obj.content | safe }}</p>
+
+                <a class="button" href="{% url 'todo_edit' new_id=obj.id %}" style="margin-left: 4px;">Edit Post</a>
+                <u><input name='todo_delete' type='submit' value='Delete Post' /></u>
+            </form>
+        {% endfor %}
+
+        <a class="button button-primary" href="{% url 'todo_create' %}">Add Todo item</a>
+{#        <a class="button button-primary" href="{% url 'rough_todo' %}">Week Sketch</a>#}
+    </div>
+
+    <div class="six columns value-prop" style="margin-left: 12%;">
+          <h3 style="font-size: 30px;">Upcoming Deadlines/Events</h3>
+        <div style="margin-top: 2%;">
+        {% for g in events %}
+            <form method='POST' action='{% url 'tdevent_selected' new_id=g.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+                {{ form.as_p }}
+            <a href="{{ g.event_url }}">{{ g.name }}</a>:
+            {{ g.start_time }} to {{ g.end_time }} <br/>
+            <b>Due Date: </b> {{ g.date }} <br/>
+            <input name='event_delete' type='submit' value='Delete Post' />
+             <u><a class="button" href="{% url 'event_edit' new_id=g.id %}" style="margin-left: 4px;">Edit Post</a></u>
+            </form>
+        {% endfor %}
+        <a class="button button-primary" href="{% url 'event_create' %}">Add a Event</a>
+    </div>
+        </div>
+    </div>
+    <div class="ui section divider"></div>
+
+    <div class="value-props row">
+        <div class="three columns value-prop" id="sideprojects">
+            <a href="{% url 'side_project' %}" style="text-decoration: none; color: black;"><h4 style="font-size: 22px;"><strong>Current Side Projects:</strong></h4></a>
+            {% for sp in side_projects %}
+                <div class="ui middle aligned animated list">
+                    <div class="item">-{{ sp.title |safe}}, <i>{{ sp.timeframe }}</i></div>
+                </div>
+            {% endfor %}
+{#            <div class="ui progress" id="myProgress">#}
+{#                <div class="bar" id="myBar"></div>#}
+{#                <div class="label">Standard</div>#}
+{#            </div>#}
+{#            <i class="add square icon" onclick="increase()"></i>#}
+        </div>
+
+        <div class="three columns value-prop" id="books">
+            <a href="{% url 'book_list' %}" style="text-decoration: none; color: black;"><h4 style="font-size: 22px;"><strong>Current Books:</strong></h4></a>
+                {% for b in book %}
+                    <div class="ui middle aligned animated list">
+                        <div class="item">-{{ b.title }}</div>
+                    </div>
+            {% endfor %}
+{#            <div class="ui progress">#}
+{#                <div class="bar"></div>#}
+{#                <div class="label">Standard</div>#}
+{#            </div>#}
+{#        <i class="add square icon" onclick="increase()"></i>#}
+        </div>
+
+
+        <div class="three columns value-prop" id="people">
+
+            <h4 style="font-size: 22px;"><strong>Video Topic of Interest:</strong></h4>
+            {% for p in person %}
+                <div class="ui middle aligned animated list">
+                    <div class="item">-{{ p.name | safe}}</div>
+                </div>
+            {% endfor %}
+{#            <div class="ui progress">#}
+{#                <div class="bar"></div>#}
+{#                <div class="label">Standard</div>#}
+{#            </div>#}
+            <div class="ui icon button" data-tooltip="Add a topic" style="height: 2.5em; width: 2.5em;">
+                <a href="{% url 'person_create' %}" style="text-decoration: none; color: black;"><i class="add icon"></i></a>
+            </div>
+{#        <i class="add square icon" onclick="increase()"></i>#}
+        </div>
+
+        <div class="three columns value-prop" id="courses">
+            <a href="{% url 'course_list' %}" style="text-decoration: none; color: black;"><h4 style="font-size: 22px;"><strong>Current Courses:</strong></h4></a>
+            {% for c in courses %}
+                <div class="ui middle aligned animated list">
+                    <div class="item">-{{ c.title | safe}}</div>
+                </div>
+            {% endfor %}
+{#            <div class="ui progress">#}
+{#                <div class="bar"></div>#}
+{#                <div class="label">Standard</div>#}
+{#            </div>#}
+{#        <i class="add square icon" onclick="increase()"></i>#}
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+{% endblock %}
+
+</div>
+
+{#<div id='second-random' class="navbar-fixed-bottom" style="font-family: 'Raleway', sans-serif;">#}
+{#<footer style="text-align: right">#}
+{#    <a href="https://feedly.com/i/latest" style="margin-right: 1%;">Feedly</a>#}
+{#    <a href="{% url 'blog_list' %}" style="margin-right: 1%;">Blog</a>#}
+{#    <a href="{% url 'dedicated_sl' %}" style="margin-right: 1%;">Self-Learning</a>#}
+{#    <a href="{% url 'feature_list' %}" style="margin-right: 3px;">Feature Request</a>#}
+{#    <a href="{% url 'test_view' %}" style="margin-right: 3px;">TestView</a>#}
+{#    <a href="{% url 'side_project' %}" style="margin-right: 1%;">Side Projects</a>#}
+{#    <a href="{% url 'book_list' %}" style="margin-right: 1%;">Books</a>#}
+{#    <a href="{% url 'course_list' %}" style="margin-right: 1%;">Courses</a>#}
+{##}
+{#</footer>#}
+{#</div>#}
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Modal Title
+  </div>
+  <div class="image content">
+    <div class="image">
+      An image can appear on left or an icon
+    </div>
+    <div class="description">
+      A description can appear on the right
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">Cancel</div>
+    <div class="ui button">OK</div>
+  </div>
+</div>
+
+<script>
+var value = 0,
+tb = document.getElementById("myProgress"),
+progress = document.getElementById("myBar");
+function increase(){
+  value = value + 10;
+  if(value>=100) value = 100;
+  tb.value = value;
+  progress.style.width = value + "%";
+}
+</script>
+
+
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+
+<script>
+  $(function(){
+      $(".element").typed({
+        strings: ["Rahul!"],
+        typeSpeed: 400
+      });
+  });
+</script>
+
+<script>
+    $('.ui.modal')
+  .modal()
+;
+</script>
+
+
+{#     Link to SemanticJS cdn#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+
+    {# Link to BootStrap #}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">#}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+<h3>{{ title }} </h3>
+
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'course_create' %}" style="margin-left: 4px;">Add a Post</a></u>
+{#<u><a href="{% url 'study_plan' %}" style="margin-left: 4px;">Course Study Plan</a></u><br/>#}
+
+{#<div style="margin-top: 6px;">{% for obj in object_list %}</div>#}
+{#    <form method='POST' action='{% url 'course_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        {{ obj.title | safe }}, By:#}
+{#        {{ obj.school | safe }}<br/>#}
+{#    <input type='submit' value='Delete Post' />#}
+{#    </form>#}
+{#{% endfor %}#}
+{% for obj in object_list %}
+
+<div class="card" style="width: 40em; height: 12em; margin: 0 auto; float: none; margin-bottom: 2%; margin-left: 4%; margin-top: 1%">
+  <div class="card-block">
+      <form method='POST' action='{% url 'course_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+        {{ form.as_p }}
+    <h4 class="card-title">{{ obj.title }}, {{ obj.school }}</h4>
+      <p class="card-text"><i>{{ obj.timeframe }}</i></p>
+      <p class="card-text">{{ obj.commitment }}</p>
+    <a href="{{ obj.url }}" class="btn btn-primary">Check out the course!</a>
+      <input class="btn btn-secondary" name="course_delete" type='submit' value='Delete Post' />
+          <u><a class="button" href="{% url 'course_edit' new_id=obj.id %}" >Edit Post</a></u>
+    </form>
+  </div>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

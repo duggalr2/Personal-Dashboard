@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Plan</title>
+</head>
+<body>
+
+<h3>TODO Planning</h3>
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'roughTD_create' %}" style="margin-left: 4px;">Create a Rough Sketch</a></u><br/>
+
+{% for obj in object_list %} <br/>
+    <form method='POST' action='{% url 'roughTD_delete' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+        {{ form.as_p }}
+    <u><a href="{% url 'roughTD_edit' new_id=obj.id %}" style="margin-left: 4px;">Edit Post</a></u>
+    {{ obj.title | safe }}
+    {{ obj.content | safe }}
+    <input type='submit' value='Delete Post' /> <br/>
+    </form>
+{% endfor %}
+
+</body>
+</html>

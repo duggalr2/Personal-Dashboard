@@ -1,0 +1,89 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Blog Post</title>
+
+</head>
+<body>
+
+<h1>Create a Post</h1>
+{##}
+{#<input type="button" value="Get selection" onmousedown="getSelText()">#}
+{#<form name=aform >#}
+{#<textarea name="selectedtext" rows="5" cols="20"></textarea>#}
+{#</form>#}
+
+{##}
+{#<form method='POST' action='{% url 'post_create' %}' >{% csrf_token %}#}
+{#    {{ prefill.as_p }}#}
+{#    <input type='submit' value='Create Post' />#}
+{#</form>#}
+
+
+<button onmousedown="bold()">Bold</button>
+<button onmousedown="ita()">Italic</button>
+<button onmousedown="underline()">Underline</button>
+<form method='POST' action='{% url 'post_create' %}' >{% csrf_token %}
+    <input type='hidden'/>
+    <p><label for="id_name">Name:</label> <input id="id_name" maxlength="250" name="name" type="text" required /></p>
+<p><label for="id_content">Content:</label>
+    <textarea cols="40" id="id_content" name="content" rows="10" required>&lt;li&gt;&lt;/li&gt;</textarea></p>
+<p><label for="id_pub_date">Pub date:</label> <input id="id_pub_date" name="pub_date" type="text" value="2017-05-09" required /><input id="initial-id_pub_date" name="initial-pub_date" type="hidden" value="2017-05-09" /></p>
+<p><label for="id_category">Category:</label> <select id="id_category" name="category" required>
+<option value="Research">Research</option>
+<option value="Interest" selected="selected">Interest</option>
+<option value="Script">Script</option>
+<option value="School">School</option>
+</select></p>
+<p><label for="id_screen_shot">Screen shot:</label> <input id="id_screen_shot" name="screen_shot" type="file" /></p>
+    <input type='submit' value='Create Post' />
+</form>
+
+
+<script>
+function getSelText()
+{
+    var txt = '';
+     if (window.getSelection)
+    {
+        txt = window.getSelection();
+             }
+    else if (document.getSelection)
+    {
+        txt = document.getSelection();
+            }
+    else if (document.selection)
+    {
+        txt = document.selection.createRange().text;
+    }
+    else return;
+    return txt
+}
+
+function bold() {
+    var textSelected = getSelText();
+    var n = '<b>' + textSelected + '</b>';
+    var t = document.getElementById('id_content');
+    t.innerHTML = n;
+}
+
+function ita(){
+    var textSelected = getSelText();
+    var n = '<i>' + textSelected + '</i>';
+    var t = document.getElementById('id_content');
+    t.innerHTML = n;
+}
+
+function underline(){
+    var textSelected = getSelText();
+    var n = '<u>' + textSelected + '</u>';
+    var t = document.getElementById('id_content');
+    t.innerHTML = n;
+}
+
+</script>
+
+</body>
+</html>

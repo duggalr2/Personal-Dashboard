@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle</title>
+</head>
+<body>
+
+<h2>Puzzle List</h2>
+
+<form method='POST' action='{% url 'puzzle_answer' %}' >{% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='Create Post' />
+</form>
+    {% for obj in object_list %}
+        {{ obj.content }}
+{#        {% if obj.answer ==  %}#}
+{#            {{ 'You are correct' }}#}
+{#            {{ obj.answer }}#}
+{#        {% else %}#}
+{#            {{ 'You are wrong' }}#}
+{#        {% endif %}#}
+{% endfor %}
+
+</body>
+</html>

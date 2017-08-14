@@ -1,0 +1,130 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Side Projects</title>
+
+    <style>
+        #goals #popup {
+        display: none;
+        }
+
+        #goals:hover #popup {
+            display: block;
+        }
+
+    </style>
+
+     {# Link to Animate cdn  #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    {# Skeleton CSS #}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+
+        {# Link to Semantic cdn  #}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+
+
+</head>
+<body>
+
+
+<div class="ui top fixed menu">
+  <div class="item">
+    <img src="{% static 'img/photo.jpg' %}">
+  </div>
+  <a class="item" href="{% url 'home_list' %}">Home</a>
+  <a class="item" href="{% url 'sp_create' %}">Add Side Project</a>
+</div>
+
+
+<div class="container" style="margin-top: 7%; margin-right: 4%">
+
+{# TODO: NEED TO THINK OF A SMARTER SOLUTION FOR THIS!!!!! #}
+
+<h4>Script Current:</h4>
+{% for i in object_list %}
+    {% if i.category == category.0 %}
+        <form method='POST' action='{% url 'sp_selected' new_id=i.id %}' onsubmit="return confirm('DO you really want to delete this?')">{% csrf_token %}
+        {{ form.as_p }}
+        {{ i.title }} <br>
+        <input name='sp_delete' class="button" type='submit' value='Delete Post' style="width: 14em; margin-left: 2em; margin-top: 1em" />
+    <a class="button" href="{% url 'sideproject_edit' new_id=i.id %}" style="width: 14em; margin-left: 2em">Edit Post</a>
+    {% endif %}
+    </form>
+{% endfor %}
+
+<h4>Side Project Current:</h4>
+{% for i in object_list %}
+    {% if i.category == category.2 %}
+        <form method='POST' action='{% url 'sp_selected' new_id=i.id %}' onsubmit="return confirm('DO you really want to delete this?')">{% csrf_token %}
+        {{ form.as_p }}
+        {{ i.title }} <br>
+        <input name='sp_delete' class="button" type='submit' value='Delete Post' style="width: 14em; margin-left: 2em; margin-top: 1em" />
+    <a class="button" href="{% url 'sideproject_edit' new_id=i.id %}" style="width: 14em; margin-left: 2em">Edit Post</a>
+    {% endif %}
+    </form>
+{% endfor %}
+
+
+</div>
+
+
+
+{#<h2>Current Side Project Ideas</h2>#}
+{##}
+{#{% for obj in object_list %}#}
+{#<div class="three columns value-prop">#}
+{##}
+{#    <div class="ui card">#}
+{##}
+{#  <div class="image">#}
+{#    <img src="{% static 'img/photo.jpg' %}">#}
+{#  </div>#}
+
+{#  <div class="content">#}
+{#    <div class="header" id="goals">{{ obj.title | safe }}#}
+{#      <div class="meta" id="popup">#}
+{#        {{ obj.content | safe }}#}
+{#      </div>#}
+{#        </div>#}
+{#      <div class="meta">#}
+{#        <span class="date">{{ obj.resources | safe }}</span>#}
+{#      </div>#}
+{##}
+{#  </div>#}
+{#  <div class="extra content">#}
+{#        {{ obj.timeframe | safe }}#}
+{#  </div>#}
+{##}
+{#    </form>#}
+{##}
+{#</div>#}
+{#</div>#}
+{##}
+{#{% endfor %}#}
+{##}
+{##}
+{#</div>#}
+{##}
+{##}
+{##}
+{#<h2>Idea Brainstorm</h2>#}
+{#<u><a href="{% url 'idea_add' %}">Add</a></u><br/>#}
+{##}
+{#{% for idea in ideas %}#}
+{#     <form method='POST' action='{% url 'sp_selected' new_id=idea.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#    {{ idea.content | safe }} <br/>#}
+{#         <input name='idea_delete' type='submit' value='Delete Post' />#}
+{#         <u><a class="button" href="{% url 'ideabrain_edit' new_id=idea.id %}" style="margin-left: 4px;">Edit Post</a></u>#}
+{#    </form>#}
+{#{% endfor %}#}
+
+
+</body>
+</html>

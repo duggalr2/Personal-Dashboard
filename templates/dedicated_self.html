@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self Learning</title>
+</head>
+<body>
+
+<h2>Dedicated Self-Learning</h2>
+<u><a href="{% url 'home_list' %}">Home</a></u>
+<u><a href="{% url 'dedicatedsl_create' %}">Add</a></u><br/>
+
+{% for obj in object_list %} <br/>
+    <form method='POST' action='{% url 'sl_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to submit the form?');">{% csrf_token %}
+        {{ form.as_p }}
+    <u><a name="edit_sl" href="{% url 'sl_edit' new_id=obj.id %}">Edit Post</a></u><br/>
+        {{ obj.title | safe }} <br/>
+        {{ obj.content | safe }} <br/>
+    <input name='delete_sl' type='submit' value='Delete Post'/>
+    </form>
+{% endfor %}
+
+</body>
+</html>
+
+{#    <form method='POST' action='{% url 'sl_selected' new_id=obj.id %}' >{% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#    <input name='edit_sl' type='submit' value='Edit Post' />#}
+{#    </form>#}
+
+
+{#{% for obj in object_list %} <br/>#}
+{#    <form method='POST' action='{% url 'sl_selected' new_id=obj.id %}' >{% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#    <form method='POST' action='{% url 'sl_edit' new_id=obj.id  %}' >{% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    {{ obj.title | safe }} <br/>#}
+{#    {{ obj.content | safe }} <br/>#}
+{#    <input name='delete' type='submit' value='Create Post' />#}
+{#        <input name='edit' type='submit' value='Edit Post' />#}
+{#    </form>#}
+{#    </form>#}
+{#{% endfor %}#}

@@ -1,0 +1,397 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>© Hacker </title>
+
+    {# Link to Animate cdn  #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+    {# Link to BootStrap #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    {# Link to Google Fonts #}
+    {# TODO: DELETE ALL THE ONES I DONT NEED; #}
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab|News+Cycle|Source+Sans+Pro" rel="stylesheet">
+
+    <script>
+        var tex = 'Rahul';
+        i = 0;
+        function typewriter() {
+            y = tex.slice(0, i++);
+            document.getElementById('element').innerHTML = 'Welcome to your Dashboard, ' + y;
+            if (y == tex) return;
+            setTimeout(typewriter, 120);
+        }
+    </script>
+
+</head>
+
+{# WELCOMING PAGE #}
+{#<body >#}
+{#<div class="container" style="text-decoration-color: white">#}
+{#<h1 id="type"><script>typewriter();</script></h1>#}
+{#<div id="welcome">#}
+{#    <h1 id="element" style="font-family: 'Raleway', sans-serif; margin-top: 15%; text-align: center; font-size: 50px"><strong>Welcome to your Dashboard, Rahul</strong></h1><br/>#}
+{##}
+{##}
+{#</div>#}
+{#display: none;#}
+{#<div id="quote" style="display:none; font-family: 'Raleway', sans-serif; text-align: center; margin-top: 1em;">#}
+{#    <h2>{{ quotes.content }}</h2><br/>#}
+{#</div>#}
+{##}
+{#<div class="row" id="goal" style="display: none; font-family: 'Raleway', sans-serif; text-align: center; margin-top: 1.5em;">#}
+{#    <div class="col">#}
+{#        <h1 style="font-size: 5em;"><strong>{% now "g:i" %}</strong></h1>#}
+{#    </div>#}
+{#    <div class="col">#}
+{#    {% for g in goals %}#}
+{#        <h4 ><strong>{{ g.title | safe }}</strong></h4>#}
+{#    {% endfor %}#}
+{#    </div>#}
+{#</div>#}
+{#</div>#}
+{#</body>#}
+{##}
+    {# TODO: Need to only make this work one time; save in cache?? #}
+{#    <script>#}
+{#        $(function() {#}
+{#            $('#welcome').hide().delay(1700).fadeIn(1500);#}
+{##}
+{#            // note that this doens't call hide#}
+{#                $('#quote').delay(3800).fadeIn('slow');#}
+{##}
+{#            // note that this doens't call hide#}
+{#                $('#goal').delay(4500).fadeIn('slow');#}
+{##}
+{#    });#}
+{#    </script>#}
+{##}
+{#    <script>#}
+{##}
+{#        var FADE_DELAY = 6000;#}
+{#        var FADE_TIME = 2000;#}
+{##}
+{#                $(document).ready(function () {#}
+{#                    $('#random').hide();#}
+{#                    $('#second-random').hide();#}
+{#                    setTimeout(fadeOutIntro, FADE_DELAY);#}
+{#                });#}
+{##}
+{#                function fadeOutIntro() {#}
+{#                    $('#welcome').fadeOut(FADE_TIME);#}
+{#                    $('#quote').fadeOut(FADE_TIME);#}
+{#                    $('#goal').fadeOut(FADE_TIME);#}
+{#			        setTimeout(fadeInPage, FADE_TIME);#}
+{#                }#}
+{#                function fadeInPage() {#}
+{#                    $('#random').fadeIn(FADE_TIME);#}
+{#                    $('#second-random').fadeIn(FADE_TIME);#}
+{#                }#}
+{#    </script>#}
+
+{# DASHBOARD #}
+
+<body>
+
+<div id="random" style="margin: auto; height: 10px">
+
+<ul class="nav" style="font-family: 'Josefin slab', sans-serif; float: right; ">
+    <li><a href="{% url 'blog_list' %}" style="color: #333333; display: inline-block; font-size: 17px; margin: 0 8px; text-decoration: none; text-transform: uppercase;">Blog</a></li>&bull;
+    <li><a href="{% url 'feature_list' %}" style="color: #333333; display: inline-block; font-size: 17px; margin: 0 8px; text-decoration: none; text-transform: uppercase;">Feature Request</a></li>&bull;
+    <li><a href="{% url 'test_view' %}" style="color: #333333; display: inline-block; font-size: 17px; margin: 0 8px; text-decoration: none; text-transform: uppercase;">Testview</a></li>
+</ul>
+
+</div>
+
+{% block content %}
+
+<div class="container" id="second-random">
+
+<div class="row text-center" style="font-family: 'Josefin slab', sans-serif; margin-top: 2em">
+
+    <div class="col">
+        <a href="{% url 'rough_todo' %}" style="text-decoration: none; color: black;"><h3 style="font-size: 30px;">Todo List</h3></a>
+        {% for obj in object_list %}
+            <form method='POST' action='{% url 'tdevent_selected' new_id=obj.id %}' onsubmit="return confirm('Do you really want to delete?')">{% csrf_token %}
+                {{ form.as_p }}
+                <p style="font-size: 16px">{{ obj.content | safe }}</p>
+                {# TODO: PRIOTITY: ACTUALLY HAVE TODO IN MODAL AND ITEMS IN THAT!!!  #}
+                    {# TODO: ADD PROPER SPACING BETWEEN EACH ITEM; Maybe use a divider???? #}
+                    {# TODO: NEED TO GET SYMBOLS FOR EDIT/DELETE/ADD; ALSO PUT ADD AT TOP OF LIST, NOT BOTTOM; #}
+                    {# TODO: DO SAME FOR EVENTS; #}
+                <a class='btn btn-primary' href="{% url 'todo_edit' new_id=obj.id %}" style="margin-left: 4px;">Edit</a>
+                <u><input class="btn btn-primary" name='todo_delete' type='submit' value='Delete Post'/></u>
+            </form>
+        {% endfor %}
+        <a class="btn btn-primary" href="{% url 'todo_create' %}" style="margin-top: 1em">Add Todo item</a>
+{#        <a class="button button-primary" href="{% url 'rough_todo' %}">Week Sketch</a>#}
+    </div>
+
+    <div class="col" style="margin-left: 12%;">
+        {# TODO: MODAL SHOULD INCLUDE BOTH EVENTS/DEADLINES #}
+        {# TODO: THE ORIGINAL PAGE WHEN MODAL IS NOT CLICKED SHOULD INCLUDE EVENTS HAPPENING THAT DAY; #}
+
+        <a data-toggle="modal" data-target=".bd-example-modal-lg">Upcoming Stuff</a>
+
+                <div style="margin-top: 2%;">
+        {% for g in events %}
+            <form method='POST' action='{% url 'tdevent_selected' new_id=g.id %}' onsubmit="return confirm('Do you really want to delete this?')">{% csrf_token %}
+                {{ form.as_p }}
+            <a href="{{ g.event_url }}">{{ g.name }}</a>:
+            {{ g.start_time }} to {{ g.end_time }} <br/>
+            <b>Due Date: </b> {{ g.date }} <br/>
+                <input class="btn btn-primary" name='event_delete' type='submit' value='Delete Post' />
+                <a class="btn btn-primary" href="{% url 'event_edit' new_id=g.id %}" style="margin-left: 4px;">Edit Post</a>
+            </form>
+        {% endfor %}
+        <a class="btn btn-primary" href="{% url 'event_create' %}">Add a Event</a>
+        </div>
+
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+    </div>
+    </div>
+
+
+    </div>
+</div>
+{##}
+    <hr />  {# << THATS A DIVIDER!! #}
+{##}
+    <div class="row">
+
+        {# SIDE PROJECTS #}
+        <div class="col" id="sideprojects" style="margin-left: 2em">
+{#            <a href="{% url 'side_project' %}" style="text-decoration: none; color: black;"><h4 style="font-family: 'Josefin slab', sans-serif; font-size: 22px;">Current Side Projects:</strong></h4></a>#}
+            <a data-toggle="modal" data-target=".side_project" style="font-family: 'Josefin slab', sans-serif; font-size: 22px;"><strong>Current Side Projects</strong></a>
+
+            {# MODAL 1 #}
+            <div class="modal fade side_project" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="side-project" style="font-family: 'Josefin slab', sans-serif; font-size: 23px;">Modal title</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+            <div class="modal-body">
+                <style>
+                    #notebook-textarea {
+{#                        background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;#}
+{#                        background: url('{% static 'img/macbooknote.png' %}');#}
+                        background: url(https://tr1.cbsistatic.com/hub/i/2015/05/07/d2f74d35-f4ad-11e4-940f-14feb5cc3d2a/03052013figure-d.gif);
+                        float: right;
+                        width: 25em;
+                        height: 25em;
+                        font: normal 14px System Font;
+                        line-height: 25px;
+                        padding: 2px 10px;
+                        border: solid 1px #ddd;
+                    }
+                </style>
+                <h6 style="text-align: right; margin-right: 5em;">Jot down your ideas...</h6>
+                <div contenteditable='true' id='notebook-textarea'>Script Ideas:</div>
+                <button onclick="save()">Save</button>
+
+                <h6>Current Script: <button onclick="location.href='{% url 'sp_create' %}'" style="margin-left: 4px;">Add a Script</button><br/>
+                </h6>
+                        {% for i in side_projects %}
+                            <form method='POST' action='{% url 'sp_selected' new_id=i.id %}' onsubmit="return confirm('This will be removed now, are you sure?')">{% csrf_token %}
+                                <h6><u>{{ i.title }}</u></h6>
+                                -{{ i.content }}<br/>
+                            <button><a href="{% url 'sideproject_edit' new_id=i.id %}" style="color: #333333; font-size: 14px; text-decoration: none;">Edit</a></button>
+                            <input name='sp_delete' class="button" type='submit' value='Done' style="font-size: 14px;"/>
+                            </form>
+                        {% endfor %} 
+                <br/>
+
+            <style>
+                #library-test {
+                    width: 100px;
+                    height: 100px;
+                }
+
+{#                #library-test > svg {#}
+{#                    width: 100%;#}
+{#                    display: block;#}
+{#                }#}
+            </style>
+                <div id="library-test"><p></p></div>
+                <button onclick="circle_add()">Circle</button>
+
+
+{#                <div id="progressbar" style="width: 50%; background-color: grey;">#}
+{#                    <div id="bar" style="width: 5%; height: 30px; background-color: green;"></div>#}
+{#                </div>#}
+{##}
+{#                <button onclick="add()">Add</button>#}
+{#                <button onclick="decrease()">Decrease</button>#}
+{#                <button onclick="reset()">Reset</button>#}
+{#                <button onclick="complete()">Complete</button>#}
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+            </div>
+
+            </div>
+            </div>
+        </div>
+
+
+
+        {# BOOKS MODAL #}
+        <div class="col" id="books" style="margin-left: 2em">
+{#            <a href="{% url 'book_list' %}" style="text-decoration: none; color: black;"><h4 style="font-family: 'Josefin slab', sans-serif; font-size: 22px;"><strong>Current Books:</strong></h4></a>#}
+            <a data-toggle="modal" data-target=".current_book" style="font-family: 'Josefin slab', sans-serif; font-size: 22px;"><strong>Current Books</strong></a>
+{#                {% for b in book %}#}
+{#                    <div class="ui middle aligned animated list">#}
+{#                        <div class="item">-{{ b.title }}</div>#}
+{#                    </div>#}
+{#            {% endfor %}#}
+
+        <div class="modal fade current_book" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Books</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          <div class="modal-body">
+
+            <button onclick="show()">Click</button>
+            <p id="ran"></p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+        </div>
+        </div>
+
+
+        </div>
+
+{#    LINKEIDN#}
+           <div class="col" id="linkedin" style="margin-left: 2em">
+            <a data-toggle="modal" data-target=".current_linkedin" style="font-family: 'Josefin slab', sans-serif; font-size: 22px;"><strong>Linkedin</strong></a>
+
+                <div class="modal fade current_linkedin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Linkedin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                  <div class="modal-body">
+                    {#              TODO: ADD A BUTTON#}
+                    {{ linkedin_rec }} {# Giving a Book Recommendation; #}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+        </div>
+        </div>
+
+
+        </div>
+
+
+        <div class="col" id="courses" style="margin-left: 2em">
+            <a href="{% url 'course_list' %}" style="text-decoration: none; color: black;"><h4 style="font-family: 'Josefin slab', sans-serif; font-size: 22px;"><strong>Current Courses:</strong></h4></a>
+            {% for c in courses %}
+                <div class="ui middle aligned animated list">
+                    <div class="item">-{{ c.title | safe}}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}
+
+{# PRIORITY #}
+{# TODO: HAVE A MAIN JS FILE! #}
+{# TODO: USE APPLICATION CACHING TO STORE JS/CSS/HTML SO FASTER LOAD TIME #}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+<script src="{% static 'js/lifeline_main.js' %}"></script>
+
+
+{#<script src="{% static 'js/progress_bar.js' %}"></script>#}
+
+
+{#                <script>#}
+{##}
+{#                    function init() {#}
+{#                        var x = getLocalStorage();#}
+{#                        if (x) {#}
+{#                            document.getElementById('notebook-textarea').innerHTML = x;#}
+{#                        }#}
+{#                    }#}
+{##}
+{#                    function setLocalStorage(x){#}
+{#                        localStorage.setItem('div_inner', x)#}
+{#                    }#}
+{##}
+{#                    function getLocalStorage(){#}
+{#                        return localStorage.getItem('div_inner')#}
+{#                    }#}
+{##}
+{#                    function save() {#}
+{#                        var y = document.getElementById('notebook-textarea').innerHTML;#}
+{#                        setLocalStorage(y);#}
+{#                        console.log(getLocalStorage())#}
+{#                    }#}
+{#                    init();#}
+{##}
+{#                </script>#}
+
+
+</body>
+</html>
+
+
+
